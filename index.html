@@ -41,40 +41,27 @@
 .essay-area{min-height:145px;line-height:1.65}.writing-guide{white-space:pre-line}.q-title{white-space:pre-line}
 @media(max-width:440px){.action-row{display:flex;gap:9px}.action-row button{flex:1;min-height:45px}.feedback .model-answer{font-size:13px}}
 
-.home-fab{position:fixed;top:max(12px,env(safe-area-inset-top));left:12px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(10,22,52,.92);color:#fff !important;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 10px 26px rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.home-fab:hover{transform:translateY(-1px)}
-.home-fab:focus-visible{outline:3px solid #ffcd61;outline-offset:3px}
-body.has-home-fab{padding-top:58px}
-@media (min-width:700px){.home-fab{top:18px;left:18px;font-size:15px;padding:11px 16px}}
 
-/* Chỉ hiện nội dung môn học; giữ lại các nút nghe, viết và chức năng chấm điểm. */
-.hero:after{content:none!important}
-.hero{padding-top:18px;padding-bottom:25px;background:#1c2c67}
-.playing .hero{padding-top:12px;padding-bottom:16px}
-.hero .overline,.hero .subtitle,.hero .hero-chips,.brand-icon{display:none!important}
-.hero .headline{font-size:clamp(24px,6vw,32px);letter-spacing:0;margin:15px 0 0;line-height:1.2}
-.shell{margin:0 auto}
-#home>.overview,#home>.notice,#home>#teacher{display:none!important}
-#home>.eyebrow{margin:21px 0 12px;font-size:17px}
-.mode-card{box-shadow:none;min-height:129px}
-.mode-card.featured{background:#fff;color:var(--ink);border-color:#dfe5f1}
-.mode-card.featured .desc,.mode-card.featured .mode-meta{color:var(--muted)}
-.mode-card.featured .mode-icon{background:#f1f3ff}
-.mode-card.orange,.mode-card.green{background:#fff}
-.footer{display:none!important}
-
-/* Nút quay lại nằm trong luồng trang, không che câu hỏi. */
-.home-fab{position:sticky!important;top:0!important;left:auto!important;margin:0 0 6px 12px!important;box-shadow:none!important;border-radius:0 0 10px 10px!important;background:#243a5b!important;font-size:13px!important;padding:8px 12px!important}
+.nav-shortcuts{position:fixed;top:max(10px,env(safe-area-inset-top));left:12px;right:12px;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:none}
+.nav-shortcuts .nav-btn,.nav-shortcuts a.nav-btn{pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(9,20,45,.90);color:#fff !important;text-decoration:none;font-weight:800;font-size:14px;line-height:1;box-shadow:0 10px 26px rgba(0,0,0,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.nav-shortcuts .nav-btn:hover{transform:translateY(-1px)}
+.nav-shortcuts .nav-btn:focus-visible{outline:3px solid #ffcd61;outline-offset:3px}
+body.with-nav-shortcuts{padding-top:68px}
+@media (max-width:420px){.nav-shortcuts{left:10px;right:10px}.nav-shortcuts .nav-btn,.nav-shortcuts a.nav-btn{padding:10px 12px;font-size:13px;min-height:40px}}
 </style>
 </head>
-<body>
-<a class="home-fab" href="https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/" aria-label="Trở lại trang chủ mini game lớp 7">← Trang chủ</a>
-<header class="hero"><div class="topbar"><div class="brand"><span class="brand-icon">📖</span><span>THCS VĨNH AN <small style="opacity:.6">/ ENGLISH 7</small></span></div><button class="sound" id="sound" aria-pressed="false">🔊 Âm thanh: bật</button></div><div class="overline">GIỮA HỌC KÌ I · NĂM HỌC 2026–2027</div><h1 class="headline">TIẾNG ANH 7</h1><p class="subtitle">Ôn tập theo đề cương giữa kì I · Có giọng đọc và phần viết nhập đáp án, chấm điểm tự động!</p><div class="hero-chips"><span class="hero-chip">⚡ Thử thách tính giờ</span><span class="hero-chip">🎯 Giải thích đáp án</span><span class="hero-chip">📱 Chơi ngay trên điện thoại</span><span class="hero-chip">🎧 Nghe phát âm tiếng Anh</span></div></header>
+<body class="with-nav-shortcuts">
+<div class="nav-shortcuts" aria-label="Điều hướng nhanh">
+<button class="nav-btn" type="button" onclick="if(window.history.length>1){window.history.back();}else{window.location.href='https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/';}" aria-label="Trở về trước">← Trở về trước</button>
+<a class="nav-btn" href="https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/" aria-label="Trở về trang chủ">⌂ Trang chủ</a>
+</div>
+
+<header class="hero"><div class="topbar"><div class="brand"><span class="brand-icon">📖</span><span>THCS VĨNH AN <small style="opacity:.6">/ ENGLISH 7</small></span></div><button class="sound" id="sound" aria-pressed="false">🔊 Âm thanh: bật</button></div><div class="overline">GIỮA HỌC KÌ I · NĂM HỌC 2026–2027</div><h1 class="headline">ENGLISH<br/><span>QUEST 7</span> 🚀</h1><p class="subtitle">Ôn tập theo đề cương giữa kì I · Có giọng đọc và phần viết nhập đáp án, chấm điểm tự động!</p><div class="hero-chips"><span class="hero-chip">⚡ Thử thách tính giờ</span><span class="hero-chip">🎯 Giải thích đáp án</span><span class="hero-chip">📱 Chơi ngay trên điện thoại</span><span class="hero-chip">🎧 Nghe phát âm tiếng Anh</span></div></header>
 <main class="shell"><div id="home">
 <section class="overview panel"><div><h2>Chọn thử thách của em!</h2><p id="bestText">Điểm cao nhất sẽ được lưu trên thiết bị này.</p></div><div class="trophy">🏆</div></section>
-<div class="eyebrow">Các phần ôn tập</div>
+<div class="eyebrow">✨ CÁC CHẶNG ÔN TẬP <small>Học đúng phần mình cần</small></div>
 <div class="mode-grid" id="modes"></div>
-<div class="eyebrow">Đọc hiểu</div>
+<div class="eyebrow">📚 VƯỢT ẢI ĐỌC HIỂU <small>5 bài đọc đúng theo đề cương</small></div>
 <div class="mode-grid" id="reads"></div>
 <div class="notice audio-note"><strong>🎧 Luyện nghe và phát âm:</strong><p>Vào một thử thách rồi chạm <strong>🔊</strong> bên cạnh đáp án để nghe từ/cụm từ; dùng <strong>▶ Nghe câu hỏi</strong> hoặc <strong>📖 Nghe bài đọc</strong> để luyện nghe. Có chế độ nói chậm, tạm dừng và tắt tiếng. Âm đọc dùng giọng tiếng Anh sẵn có trên điện thoại/trình duyệt, vì thế chất giọng có thể khác nhau. Hãy tăng âm lượng máy và bấm nút nghe để bắt đầu (trình duyệt thường chặn phát tự động).</p></div><div class="notice"><strong>📌 Dành cho học sinh:</strong><p>Trò chơi xây dựng theo Hướng dẫn ôn tập Tiếng Anh 7 giữa học kì I của Trường THCS Vĩnh An. Những câu đề gốc còn chưa rõ được tách khỏi phần chấm điểm tự động; 17 câu viết được chấm Đúng/Sai tự động; 3 đoạn văn được đánh giá sơ bộ theo độ dài và các ý trong đề. Những câu đề gốc chưa rõ không tính điểm. Với câu viết có nhiều cách diễn đạt đúng, học sinh có thể đối chiếu thêm với giáo viên nếu hệ thống chưa nhận câu trả lời.</p></div>
 <details class="teacher" id="teacher"><summary>📝 Các câu cần giáo viên rà soát trong đề gốc</summary><ol id="flagList"></ol></details>
