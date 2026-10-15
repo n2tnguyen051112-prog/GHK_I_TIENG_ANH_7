@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html data-subject="Tiếng Anh 7" lang="vi">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -48,7 +48,18 @@
 .nav-shortcuts .nav-btn:focus-visible{outline:3px solid #ffcd61;outline-offset:3px}
 body.with-nav-shortcuts{padding-top:68px}
 @media (max-width:420px){.nav-shortcuts{left:10px;right:10px}.nav-shortcuts .nav-btn,.nav-shortcuts a.nav-btn{padding:10px 12px;font-size:13px;min-height:40px}}
+#playstats-gate{position:fixed;inset:0;z-index:2147483646;display:grid;place-items:center;padding:20px;background:rgba(9,18,42,.9);color:#17233d;overflow:auto}
+#playstats-gate .playstats-panel{background:#fff;border-radius:20px;padding:24px;width:min(100%,440px);box-shadow:0 20px 70px rgba(0,0,0,.26);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;text-align:left}
+#playstats-gate h2{font-size:23px;font-weight:800;line-height:1.3;color:#182447;margin:0 0 8px}
+#playstats-gate p{font-size:14px;color:#495670;line-height:1.5;margin:8px 0 16px}
+#playstats-gate label{display:block;font-weight:700;color:#24354f;font-size:14px;margin:13px 0 6px}
+#playstats-gate input{display:block;width:100%;font-family:inherit;font-size:16px;border:1px solid #b9c9df;border-radius:11px;padding:12px;background:#fff;color:#17233d}
+#playstats-gate button{margin-top:14px;width:100%;border:0;border-radius:12px;padding:14px;background:#1560bd;color:#fff;font-weight:800;font-family:inherit;font-size:16px;min-height:48px;cursor:pointer}
+#playstats-gate .playstats-privacy{font-size:12px;color:#596781;margin-top:14px}
 </style>
+<script src="https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/config.js"></script>
+<script src="https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/tracker.js"></script>
+<script>window.PlayStats=window.PlayStats||{begin:()=>true,finish:()=>{}};</script>
 </head>
 <body class="with-nav-shortcuts">
 <div class="nav-shortcuts" aria-label="Điều hướng nhanh">
@@ -214,7 +225,7 @@ function buildModes(){
  if(missed.length){const btn=document.createElement('button');btn.id='retryWrong';btn.className='secondary';btn.style='margin-top:12px';btn.textContent=`🔁 Ôn lại ${missed.length} câu từng trả lời sai`;btn.onclick=()=>start('missed');$('home').querySelector('.overview').appendChild(btn)}
 }
 function shuffled(a){const x=a.slice();for(let i=x.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
-function start(mode){
+function start(mode){if(!PlayStats.begin(mode))return;
  const pool=all.filter(x=>!['write','essay'].includes(x.type));
  let items=mode==='speed'?shuffled(pool.filter(x=>!x.ungraded)).slice(0,15):mode==='exam'?pool:mode==='missed'?readStore('english7-missed',[]).map(i=>byId[i]).filter(Boolean):mode.startsWith('writing-')?all.filter(x=>x.id.startsWith(mode+'-')):all.filter(x=>x.section===mode);
  if(!items.length){alert('Chưa có câu cần ôn lại. Em hãy thử một vòng khác nhé!');return}
@@ -374,7 +385,7 @@ function showWritingFeedback(x,skipped=false){if(state.used)return;
 function next(){state.n++;if(state.mode==='speed'&&state.hearts===0){finish();return}showQuestion();window.scrollTo({top:0,behavior:'instant'})}
 function finish(){stopSpeaking();clearInterval(state.timer);state.timer=null;fanfare();
  $('play').classList.add('hidden');$('home').classList.add('hidden');$('complete').classList.remove('hidden');
- const total=state.correct+state.wrong,rate=total?Math.round(state.correct/total*100):0;
+ const total=state.correct+state.wrong,rate=total?Math.round(state.correct/total*100):0;PlayStats.finish({score:state.score,correct:state.correct,total,percent:rate,graded:true,note:state.mode});
  const best=readStore('english7-best',{});best[state.mode]=Math.max(Number(best[state.mode]||0),state.score);writeStore('english7-best',best);
  const title=rate>=90?'SIÊU SAO TIẾNG ANH! 🌟':rate>=70?'XUẤT SẮC! 🚀':rate>=50?'NỖ LỰC TUYỆT VỜI! 💪':'CỨ LUYỆN LÀ SẼ GIỎI! 🌱';
  $('resultPane').innerHTML=`<div class="result-trophy">${rate>=70?'🏆':'🎖️'}</div><h2>${title}</h2><div class="big">${state.score} XP</div><p>Em vừa hoàn thành <strong>${state.correct+state.wrong}</strong> câu/bài trong thử thách. Mỗi lần luyện tập là một lần tiến bộ!</p><div class="result-detail"><div><strong>${state.correct}</strong>Đúng / đạt</div><div><strong>${state.wrong}</strong>Chưa đúng</div><div><strong>${rate}%</strong>Tỉ lệ</div></div><div class="result-acts"><button class="primary" id="playAgain">🔁 Chơi lại</button><button class="secondary" id="goHome">🏠 Về trang chủ</button></div><p style="margin-top:14px;font-size:12px">${state.mode.startsWith('writing')?'✍️ 17 câu viết chấm tự động; 3 đoạn văn xét tiêu chí sơ bộ. Câu chưa đạt được lưu để ôn lại.':'🏅 Câu sai đã được lưu trong mục Ôn lại.'}</p>`;
