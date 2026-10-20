@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" data-subject="Tiếng Anh 7">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -48,8 +48,78 @@
 .nav-shortcuts .nav-btn:focus-visible{outline:3px solid #ffcd61;outline-offset:3px}
 body.with-nav-shortcuts{padding-top:68px}
 @media (max-width:420px){.nav-shortcuts{left:10px;right:10px}.nav-shortcuts .nav-btn,.nav-shortcuts a.nav-btn{padding:10px 12px;font-size:13px;min-height:40px}}
+/* Khung mobile thống nhất: chỉ áp dụng điện thoại, không thay ngân hàng câu hỏi */
+@media (max-width:700px){
+  html.u7-mobile, html.u7-mobile body {width:100%; height:100%; overflow:hidden!important; overscroll-behavior:none;}
+  html.u7-mobile body {margin:0!important;padding-top:0!important;}
+  html.u7-mobile .u7-titlebar {position:fixed;z-index:10005;left:0;right:0;top:0;min-height:calc(56px + env(safe-area-inset-top,0px));padding:calc(6px + env(safe-area-inset-top,0px)) 8px 6px;display:flex;align-items:center;gap:6px;background:#16264e;color:#fff;border-bottom:1px solid #455885;box-shadow:0 3px 15px #07132b44;font:700 12px/1.18 system-ui,Arial,sans-serif;}
+  html.u7-mobile .u7-titlebar .u7-label {flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:clamp(11px,3.3vw,14px);color:#fff;}
+  html.u7-mobile .u7-titlebar button,html.u7-mobile .u7-titlebar a{border:1px solid #60719c;background:#ffffff1c;color:#fff;text-decoration:none;white-space:nowrap;border-radius:10px;padding:9px 7px;min-height:36px;font-size:11px;font-weight:750;cursor:pointer;}
+  html.u7-mobile .u7-fixedbar{position:fixed;z-index:10005;bottom:0;left:0;right:0;min-height:calc(66px + env(safe-area-inset-bottom,0px));padding:7px 12px calc(8px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:9px;background:#fff;border-top:1px solid #dae4f1;box-shadow:0 -4px 20px #0f234026;font:700 12px system-ui,Arial,sans-serif;}
+  html.u7-mobile .u7-hint{color:#536580;flex:1;min-width:0;line-height:1.25;font-size:11px;}
+  html.u7-mobile .u7-go{flex:0 0 auto;border:0;border-radius:12px;background:#1664c4;color:#fff;font-weight:900;padding:12px 14px;min-height:43px;max-width:61vw;white-space:nowrap;font-size:13px;}
+  html.u7-mobile .u7-go:disabled{background:#c4d3e7;color:#49637d;opacity:1;cursor:default;}
+  html.u7-mobile #u7-scroll {height:100vh;height:100dvh;width:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-top:calc(65px + env(safe-area-inset-top,0px));padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));scrollbar-width:thin;}
+  html.u7-mobile.u7-kind-app #app, html.u7-mobile.u7-kind-root #root, html.u7-mobile.u7-kind-cn #app, html.u7-mobile.u7-kind-adventure #app{height:100vh!important;height:100dvh!important;max-height:100dvh!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-top:calc(66px + env(safe-area-inset-top,0px))!important;padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))!important;scrollbar-width:thin;}
+  html.u7-mobile.u7-kind-app .nav-shortcuts,html.u7-mobile.u7-kind-quest .nav-shortcuts,html.u7-mobile.u7-kind-adventure .topnav,html.u7-mobile.u7-kind-root .topbar,html.u7-mobile.u7-kind-cn header.bar{display:none!important;}
+  html.u7-mobile.u7-kind-app #app{margin:0 auto!important;}
+  html.u7-mobile.u7-kind-app #app.app{padding-left:12px!important;padding-right:12px!important;}
+  html.u7-mobile.u7-kind-app #app .header{padding-top:8px!important;}
+  html.u7-mobile.u7-kind-root #root,html.u7-mobile.u7-kind-cn #app{padding-left:12px!important;padding-right:12px!important;}
+  html.u7-mobile.u7-kind-adventure #app .shell{padding-top:8px!important;padding-bottom:16px!important;}
+  html.u7-mobile.u7-kind-quest #u7-scroll .hero{margin-top:0;}
+  html.u7-mobile.u7-kind-quest #u7-scroll .shell{margin-top:-22px;}
+  html.u7-mobile #app,html.u7-mobile #root,html.u7-mobile #u7-scroll{overflow-x:hidden!important;}html.u7-mobile img,html.u7-mobile svg{max-width:100%;}html.u7-mobile pre,html.u7-mobile table{max-width:100%;}
+  html.u7-mobile #next:not(#u7-fixed-next),html.u7-mobile #nextQuestion,html.u7-mobile .next-ready,html.u7-mobile [data-act="next"],html.u7-mobile [data-action="next"]{position:absolute!important;left:-99999px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;padding:0!important;margin:0!important;}
+  html.u7-mobile button,html.u7-mobile a{touch-action:manipulation;}
+}
+@media (max-width:359px){html.u7-mobile .u7-titlebar button,html.u7-mobile .u7-titlebar a{font-size:10px!important;padding:7px 6px!important;}html.u7-mobile .u7-go{font-size:12px!important;padding:10px 11px!important;}}
+
+
+/* Mobile viewport stability v3 — chỉ thay bố cục, không can thiệp đáp án hay dữ liệu game. */
+@media screen and (max-width:700px){
+  html,body{max-width:100%;width:100%;height:100%;height:100dvh;overflow:hidden!important;}
+  *,*::before,*::after{box-sizing:border-box;}
+  img,video,canvas,svg{max-width:100%;}
+  input,textarea,select{font-size:max(16px,1em);}
+  html.u7-mobile .u7-titlebar,html.u7-mobile .u7-fixedbar{box-sizing:border-box;width:100%;max-width:100vw;}
+  html.u7-mobile .u7-titlebar{top:0;z-index:10005;}
+  html.u7-mobile .u7-fixedbar{bottom:0;z-index:10005;}
+  html.u7-mobile.u7-kind-app #app,
+  html.u7-mobile.u7-kind-root #root,
+  html.u7-mobile.u7-kind-cn #app,
+  html.u7-mobile.u7-kind-quest #u7-scroll{
+    position:relative;width:100%!important;max-width:100vw!important;
+    height:100vh!important;height:100dvh!important;min-height:0!important;max-height:100dvh!important;
+    overflow-y:auto!important;overflow-x:hidden!important;
+    overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;
+    scrollbar-width:thin;
+  }
+  html.u7-mobile .u7-go{flex-shrink:0;min-height:42px;}
+  html.u7-mobile #app .question-card,
+  html.u7-mobile #root .question-card,
+  html.u7-mobile #u7-scroll .question-card,
+  html.u7-mobile #app .options,
+  html.u7-mobile #root .options,
+  html.u7-mobile #u7-scroll .options{
+    max-width:100%;min-width:0;overflow-wrap:anywhere;
+  }
+  html.u7-mobile .u7-hint{overflow-wrap:anywhere;}
+  html.u7-mobile .u7-titlebar button,html.u7-mobile .u7-titlebar a{flex-shrink:0;}
+  .app{height:100vh!important;height:100dvh!important;max-height:100dvh!important;min-height:0!important;}
+  .app > main,.app main#view,.app main#main{min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+  .app > header,.app > footer{flex-shrink:0;}
+  #view,.content,.card,.question{min-width:0;overflow-wrap:break-word;}
+}
+@media screen and (max-width:359px) and (max-height:620px){
+  html.u7-mobile .u7-hint{font-size:10px;}
+  html.u7-mobile .u7-fixedbar{padding-left:8px;padding-right:8px;gap:6px;}
+  .app > main{padding-left:10px;padding-right:10px;}
+  .app > footer{gap:6px;}
+}
+
 </style>
-</head>
+<script src="https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/config.js"></script><script src="https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/tracker.js"></script></head>
 <body class="with-nav-shortcuts">
 <div class="nav-shortcuts" aria-label="Điều hướng nhanh">
 <button class="nav-btn" type="button" onclick="if(window.history.length>1){window.history.back();}else{window.location.href='https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/';}" aria-label="Trở về trước">← Trở về trước</button>
@@ -215,7 +285,7 @@ function buildModes(){
  if(missed.length){const btn=document.createElement('button');btn.id='retryWrong';btn.className='secondary';btn.style='margin-top:12px';btn.textContent=`🔁 Ôn lại ${missed.length} câu từng trả lời sai`;btn.onclick=()=>start('missed');$('home').querySelector('.overview').appendChild(btn)}
 }
 function shuffled(a){const x=a.slice();for(let i=x.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
-function start(mode){
+function start(mode){if(window.PlayStats && !window.PlayStats.begin(mode))return;
  const pool=all.filter(x=>!['write','essay'].includes(x.type));
  let items=mode==='speed'?shuffled(pool.filter(x=>!x.ungraded)).slice(0,15):mode==='exam'?pool:mode==='missed'?readStore('english7-missed',[]).map(i=>byId[i]).filter(Boolean):mode.startsWith('writing-')?all.filter(x=>x.id.startsWith(mode+'-')):all.filter(x=>x.section===mode);
  if(!items.length){alert('Chưa có câu cần ôn lại. Em hãy thử một vòng khác nhé!');return}
@@ -380,7 +450,7 @@ function showWritingFeedback(x,skipped=false){if(state.used)return;
  $('next').onclick=next;
 }
 function next(){state.n++;if(state.mode==='speed'&&state.hearts===0){finish();return}showQuestion();window.scrollTo({top:0,behavior:'instant'})}
-function finish(){stopSpeaking();clearInterval(state.timer);state.timer=null;fanfare();
+function finish(){if(window.PlayStats){const total=state.correct+state.wrong;window.PlayStats.finish({score:state.score,correct:state.correct,total,percent:total?Math.round(state.correct/total*100):0,graded:true,note:state.mode});}stopSpeaking();clearInterval(state.timer);state.timer=null;fanfare();
  $('play').classList.add('hidden');$('home').classList.add('hidden');$('complete').classList.remove('hidden');
  const total=state.correct+state.wrong,rate=total?Math.round(state.correct/total*100):0;
  const best=readStore('english7-best',{});best[state.mode]=Math.max(Number(best[state.mode]||0),state.score);writeStore('english7-best',best);
@@ -393,5 +463,59 @@ $('back').onclick=()=>{if(confirm('Em muốn quay về trang chủ? Tiến độ
 window.addEventListener('keydown',e=>{if($('play').classList.contains('hidden'))return;const x=state.items[state.n];if(!x||state.used||e.target?.tagName==='TEXTAREA')return;if(x.type==='mc'&&'1234'.includes(e.key)){let b=document.querySelector(`[data-choice="${Number(e.key)-1}"]`);if(b)b.click()}else if(x.type==='tf'&&'12'.includes(e.key)){document.querySelector(`[data-choice="${e.key==='1'?'true':'false'}"]`)?.click()}});
 buildModes();
 </script>
+<script>/* Trang giao diện chuẩn hóa dùng nút tiếp theo sẵn có của game, KHÔNG thay đổi chấm điểm */
+(function(){
+'use strict';
+if (!window.matchMedia('(max-width:700px)').matches) return;
+const subject="Tiếng Anh 7 · Giữa kỳ",kind="quest";
+const d=document, h=d.documentElement, portal='https://n2tnguyen051112-prog.github.io/MINI_GAME_LOP_7/';
+h.classList.add('u7-mobile','u7-kind-'+kind);
+let center;
+if(kind==='quest'){
+ center=d.createElement('div');center.id='u7-scroll';
+ const hero=d.querySelector('body > header.hero');const shell=d.querySelector('body > main.shell');
+ if(hero&&shell){d.body.insertBefore(center,hero);center.append(hero,shell);}
+}else if(kind==='root')center=d.getElementById('root');
+else center=d.getElementById('app');
+if(!center)return;
+const top=d.createElement('div'); top.className='u7-titlebar';top.setAttribute('role','navigation');top.setAttribute('aria-label','Điều hướng');
+top.innerHTML='<button type="button" id="u7-back" aria-label="Trở về trước">← Trở về</button><strong class="u7-label"></strong><a href="'+portal+'" aria-label="Trạm Mini Game">⌂ Trạm game</a>';
+top.querySelector('.u7-label').textContent=subject;
+const foot=d.createElement('div');foot.className='u7-fixedbar';foot.setAttribute('role','navigation');foot.setAttribute('aria-label','Chuyển câu hỏi');
+foot.innerHTML='<span class="u7-hint" id="u7-hint">Chọn bài để bắt đầu.</span><button class="u7-go" id="u7-fixed-next" type="button" disabled>Câu tiếp theo →</button>';
+d.body.append(top,foot);
+const btn=foot.querySelector('button'),hint=foot.querySelector('#u7-hint');
+const nextSelector=kind==='adventure'?'#nextQuestion':kind==='root'?'.next-ready':kind==='cn'?'#next':kind==='app'?'#next,[data-act="next"]':'#next';
+let original=null,lastScreen='';
+function usable(n){
+ if(!n||n===btn||n.disabled||n.hidden||n.hasAttribute('hidden'))return false;
+ for(let a=n;a&&a!==d.body;a=a.parentElement){
+  if(a.hidden||a.getAttribute('aria-hidden')==='true'||a.classList.contains('hidden')||a.classList.contains('hide')||a.style.display==='none')return false;
+ }
+ return true;
+}
+function sync(){
+ const found=Array.from(center.querySelectorAll(nextSelector)).find(usable);
+ original=found||null;
+ btn.disabled=!original;
+ if(original){hint.textContent='Đã trả lời · xem giải thích và tiếp tục';let t=original.textContent.trim().replace(/^[→\s]+|[→\s]+$/g,'');btn.textContent=t.length<28?t:'Câu tiếp theo →';}
+ else{btn.textContent='Câu tiếp theo →';hint.textContent='Chọn đáp án để tiếp tục.';}
+}
+let scheduled=false;
+function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;sync();});}
+const obs=new MutationObserver(schedule);obs.observe(center,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','class','disabled']});
+btn.addEventListener('click',()=>{sync();if(!original)return;original.click();center.scrollTop=0;setTimeout(sync,0);});
+top.querySelector('#u7-back').addEventListener('click',()=>{
+ const back=d.querySelector('#backBtn,#gameHomeBtn,#gameHome,#back,[data-act="home"]');
+ if(back&&back!==top.querySelector('#u7-back')){back.click();center.scrollTop=0;return;}
+ try{if(typeof home==='function'){home();center.scrollTop=0;return;}}catch(e){}
+ location.href=portal;
+});
+// Sau chuyển chế độ/câu mới, vùng giữa tự trở về đầu. Không di chuyển thanh nút.
+center.addEventListener('click',ev=>{
+ if(ev.target.closest('[data-mode],[data-section],[data-unit],[data-lesson],[data-topic],[data-choice],[data-act="home"],[data-start],[data-nav]'))setTimeout(schedule,0);
+});
+sync();
+})();</script>
 </body>
 </html>
